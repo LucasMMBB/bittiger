@@ -59,3 +59,35 @@ And now you can create a virtual environment specific to your project
 
 And finally you can pip install packages locally which will be located in that env folder, so make sure you don't commit that folder
 `pip install [package names]`
+
+
+### Module
+if you want to put whatever Python statements you typed into a file and call it something end up in .py, you have a Python module.
+
+For example, let's create a Python module file called `cal.py` and put code
+```
+# two sum
+def add(a, b):
+	if type(a) is int and type(b) is int:
+		print(a + b)
+	else:
+		print('inputs are not integer type')
+
+```
+Now create a file at the same folder, and call it `test.py`.
+
+    import cal
+	num1 = 1
+	num2 = 2
+	cal.add(num1,num2)
+
+### Package
+Module is awesome, which allows you to reuse your code. But once you start to write more modules, they become hard to manage. Especially, what if you are using other peoples' module and they have the same name.
+
+Packages are designed to solve this problem. You can think of packages as a namespace. And it helps modules from clashing into each other.
+
+In Python, packages are organized according to file systems. So, to create a package, you need to create a directory
+`mkdir schedule`
+
+Besides directory, you also need to create a special Python file called `__init__.py`, which is a file to let Python know that this package is an awesome package
+`touch __init__.py`
