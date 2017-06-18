@@ -1,8 +1,6 @@
 # Python tutorial
 
 ## Python basics
-### Operations
-### Variables
 ### Data structure
 ##### List
 `a = []`
@@ -38,3 +36,26 @@ add(num1, num2)
 ```
 
 ## Python intermediate topics
+### Pip
+Here is a list of dependency management tools in some languages
+- Python - pip
+- Java - mvn
+- JavaScript - npm
+
+After you have pip installed, you can verify pip version
+`pip --version`
+
+Also, you can try to install packages
+`pip install pytest`
+`pip list`
+ 
+### Virtualenv
+Pip install dependencies at a central place, so the change will affect all your projects. Virtualenv is a solution and you can use it create an isolation among your projects
+`pip install virtualenv`
+
+And now you can create a virtual environment specific to your project
+`virtualenv env`
+`source env/bin/activate`
+
+And finally you can pip install packages locally which will be located in that env folder, so make sure you don't commit that folder
+`pip install [package names]`
