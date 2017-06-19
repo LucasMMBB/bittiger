@@ -1,7 +1,6 @@
 # Python tutorial
 
 ## Python basics
-### Data structure
 ##### List
 `a = []`
 `b = [1,2, "maoxu"]// diff types`
@@ -60,7 +59,6 @@ And now you can create a virtual environment specific to your project
 And finally you can pip install packages locally which will be located in that env folder, so make sure you don't commit that folder
 `pip install [package names]`
 
-
 ### Module
 if you want to put whatever Python statements you typed into a file and call it something end up in .py, you have a Python module.
 
@@ -91,6 +89,7 @@ In Python, packages are organized according to file systems. So, to create a pac
 
 Besides directory, you also need to create a special Python file called `__init__.py`, which is a file to let Python know that this package is an awesome package
 `touch __init__.py`
+
 
 ### Object Oriented Programming
 Firstly, here is an observation about programming. Programming is about two things: data and login to process data.
@@ -144,3 +143,125 @@ Things to notice in the above program:
 2.__self__ is a particular variable, it points to the object itself.
 
 Just printing information is not particular useful for a class, we can add more functionality to it by adding more methods:
+```
+class Schedule(object):
+
+	name = None
+	desp = None
+	tasks = None
+
+	# - method is in class
+	def __init__(self, n, d):
+		self.name = n
+		self.desp = d
+		self.tasks = {}
+
+	def add_task(self, taskname, content, priority):
+		if taskname not in self.tasks:
+			task = [taskname, priority, content]
+			self.tasks.update({taskname: task})
+		self.display()
+
+	def remove_task(self, taskname):
+		if taskname in self.tasks:
+			self.tasks.pop(taskname)
+		self.display()
+
+	def display(self):
+		if self.tasks:
+			print('Here are you tasks: ')
+			for v in self.tasks.values():
+				print('%-10s %-5s %-50s' % (v[0], v[2], v[1]))
+
+	def __str__(self):
+		return 'Schedule %s, %s' % (self.name, self.desp)
+
+s1 = Schedule('s1', 'work schedule')
+s1.add_task('cs105', 'teach cs105', 1000)
+s1.add_task('cs106', 'teach cs106', 10)
+s1.remove_task('cs105')
+```
+In the above code, we beefed up Schedule class to help the ability of add_task and remove_task.
+
+### Decorator
+In Python, functions are first-class objects as well, which means that you can pass functions around and use them as arguments for other functions.
+```
+def answer():
+	def give42():
+		return 42
+	return give42
+
+a =  answer()
+print(answer)
+print(answer())
+print(answer()())
+print(a())
+```
+As you can see, functions in Python is exactly like other projects like number, string, ets. The difference is that functions can be invoked with `()` syntax. With this in mind, we shouldn't be surprised about this.
+```
+def display_decorator(func):
+	def wrapper():
+		print('before func')
+		func()
+		print('after func')
+	return wrapper
+
+def test_func():
+	print('this is a func')
+
+display_decorator(test_func)()
+```
+This mechanism of wrapping a function and modify its behaviour before and after that function is called decorator.
+Python actually provides a special syntax for the ease of decorator.
+```
+from datetime import datetime
+
+def displaytime_decorator(func):
+
+	def wrapper(*args, **kwargs):
+		print(str(datetime.now()))
+		return func(*args, **kwargs)
+
+	return wrapper
+
+class Schedule(object):
+
+	name = None
+	desp = None
+	tasks = None
+
+	# - method is in class
+	def __init__(self, n, d):
+		self.name = n
+		self.desp = d
+		self.tasks = {}
+
+	@displaytime_decorator
+	def add_task(self, taskname, content, priority):
+		if taskname not in self.tasks:
+			task = [taskname, priority, content]
+			self.tasks.update({taskname: task})
+		self.display()
+	@displaytime_decorator
+	def remove_task(self, taskname):
+		if taskname in self.tasks:
+			self.tasks.pop(taskname)
+		self.display()
+
+	def display(self):
+		if self.tasks:
+			print('Here are you tasks: ')
+			for v in self.tasks.values():
+				print('%-10s %-5s %-50s' % (v[0], v[2], v[1]))
+
+	def __str__(self):
+		return 'Schedule %s, %s' % (self.name, self.desp)
+
+# test code
+s1 = Schedule('s1', 'work schedule')
+s1.add_task('cs105', 'teach cs105', 1000)
+s1.add_task('cs106', 'teach cs106', 10)
+s1.remove_task('cs105')
+```
+Things to notice in the above program:
+1. The __@__ symbol plus the decorator is a quick way of applying a decorator to a function/method.
