@@ -40,10 +40,3 @@ class Schedule(object):
 
 	def __str__(self):
 		return 'Schedule %s, %s' % (self.name, self.desp)
-
-# test code
-s1 = Schedule('s1', 'work schedule')
-s1.add_task('cs105', 'teach cs105', 1000)
-s1.add_task('cs106', 'teach cs106', 10)
-s1.remove_task('cs105')
-

@@ -276,3 +276,47 @@ with open ('text.txt', 'r') as f:
 ``` 
 Things to notice in the above program:
 1. Notice in the open function call, besides the path to the file, we also used `r` meaning that we just want to read the content, any write operation to that file will cause error.
+### Error and Exception
+Python and all other languages provide mechanism to allow you to address these issues through `Exception`. You can catch exceptions using:
+```
+try:
+	# - awesome code goes here
+except Exception as e:
+	# - deal with the exception
+finally:
+	# - do final clean up
+```
+Things to notice in the above program:
+1. `finally` code block will always get executed no matter what. So it is a good place to some final cleanup.
+2.  `Exception` is a predefined base class in Python, it represents <b>ALL</b> exceptions. So sometimes it is too broad.
+
+You can customize and define more fine-grained exceptions.
+```
+class AwesomeException(Exception):
+	"""docstring for AwesomeException"""
+	def __init__(self, *args, **kwargs):
+		Exception.__init__(self, *args, **kwargs)
+
+raise AwesomeException('here is an error')		
+```
+### Testing
+In Python there are numerous testing frameworks that can help you write test cases. For example, with pytest. You can express test cases like this.
+```
+from scheduler import Schedule
+
+def test_addtask():
+	s = Schedule('maoxu', 'work schedule')
+	s.add_task('test', 'test content', 100)
+	s.add_task('cs106', 'teach cs106', 10)
+	assert 'test' in s.tasks
+	assert 'cs106' in s.tasks
+
+def test_removetask():
+	s = Schedule('maoxu', 'personal schedule')
+	s.add_task('test', 'test content', 100)
+	s.remove_task('test')
+	assert s.tasks == {}
+```
+Things to notice in the above program:
+1. `assert` keyword is used to express some condition must meet. For example, we assert that after adding a new task into schedule, `test` must be in the dictionary of tasks.
+2. Test cases are essentially also Python code. The only thing is that they follow the naming conversion of starting with `test_`.
