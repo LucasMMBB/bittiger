@@ -265,3 +265,14 @@ s1.remove_task('cs105')
 ```
 Things to notice in the above program:
 1. The __@__ symbol plus the decorator is a quick way of applying a decorator to a function/method.
+
+### File IO
+Our schedule keeping app works fine, but it can't store the state of existing schedules. We need to store the data not in memory, but in a persist location, for example, file system.
+
+Unlike other languages, working with file is very easy in Python. For example, if you want to read the content of a file.
+```
+with open ('text.txt', 'r') as f:
+	data = f.read()
+``` 
+Things to notice in the above program:
+1. Notice in the open function call, besides the path to the file, we also used `r` meaning that we just want to read the content, any write operation to that file will cause error.
