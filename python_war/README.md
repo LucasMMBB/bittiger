@@ -403,7 +403,7 @@ print(end - start)
 ```
 As a matter of fact, we have been running our Python program with only one thread, which you can think of as a single worker unit. In modern computers, you can actually leverage more threads to perform work in parallel. This will help us to speed up.
 ```
-# Multi-threading
+### Multi-threading
 import httplib
 import threading
 import datetime
@@ -465,3 +465,63 @@ ed = datetime.datetime.now()
 print("main thread time: ")
 print(ed - st)
 ```
+###Queue
+Multi-threading programming is a huge topic, and there are a lot to cover such as Locks, etc. But for implementing network crawler, there is one particular technique is very important.
+Any  website is built with many inter-connected pages. For example, the front page of wikipedia logically looks like this:
+
+--- front page
+| - page 1
+| - page 2
+		| - page 3
+
+So when you performing crawling with 4 thread, how do you assign a URL to a specific thread for processing? You basically have a huge collection of tasks that are generating new tasks and a pool of resources to perform the tasks, this kind of problem is normally called `Producer-Consumer Problem`. One way to solve this is to use thread-safe FIFO queue.
+```
+import Queue
+
+q = Queue.Queue()
+for i in range(100):
+	q.put(i)
+while not q.empty():
+	print(q.get())
+```
+You can think of a queue as a mailbox, whenever there is a new task, just drop into mailbox, and whoever is ready to work on the new task, just go and get a task from the mailbox. With this idea in mind, we can try to solve `Producer-Consumer Problem`.
+```
+import Queue
+import random
+import threading
+import time
+
+q = Queue.Queue()
+counter = 0
+lock = threading.RLock()
+
+def worker(i, q):
+    while True:
+        task = q.get()
+        print('Thread %d working on task %d' % (i, task))
+        time.sleep(1)
+        count_new_tasks = random.randrange(0, 10)
+        print('putting %d new tasks in queue' % count_new_tasks)
+        for new in range(count_new_tasks):
+            q.put(new)
+        q.task_done()
+        global counter
+        with lock:
+            counter += 1
+            print('Totally processed %d tasks so far' % counter)
+
+for i in range(3):
+    t = threading.Thread(target = worker, args = (i, q, ))
+    t.setDaemon(True)
+    t.start()
+
+q.put(1)
+
+q.join()
+```
+Things to notice in the above program:
+1. Whenever we process a task, we put some random number of tasks into queue to simulate crawling websites, because we normally run into more links when we crawl a website.
+2. `random` is a built-in module that can generate random stuff, we used `random.randrange()`function to generate a random number in range.
+3. The join call in the end will only finish when there's no more task in the queue.
+4. Threads come in two flavors, daemon or non-daemon. The difference is that Python will not exit until all non-daemon threads exit
+5. In order to count how many tasks we have processes so far, we used a counter to keep track of the number of tasks we processed so far. However, dealing with counter is not as easy as in single thread, because there is race condition. Therefore, we used a lock to lock down stuff and make sure only one thread can access that counter at a time.
