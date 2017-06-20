@@ -12,10 +12,10 @@ def worker(i, q):
         task = q.get()
         print('Thread %d working on task %d' % (i, task))
         time.sleep(1)
-        #count_new_tasks = random.randrange(0, 10)
-        #print('putting %d new tasks in queue' % count_new_tasks)
-        #for new in range(count_new_tasks):
-        #    q.put(new)
+        count_new_tasks = random.randrange(0, 10)
+        print('putting %d new tasks in queue' % count_new_tasks)
+        for new in range(count_new_tasks):
+            q.put(new)
         q.task_done()
         global counter
         with lock:
@@ -29,5 +29,5 @@ for i in range(3):
     t.setDaemon(True)
     t.start()
 print("main thread done")
-#q.put(1)
+q.put(1)
 q.join()
