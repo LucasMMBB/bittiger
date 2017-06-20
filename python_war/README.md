@@ -370,3 +370,18 @@ Things to notice in the above program:
 1. We imported the Python built in HTTP library `httplib`
 2. Because the website `typicode` uses HTTPS protocol, we used `HTTPSConnection`.
 3. Then sent our request to `/posts` endpoint to request some random data given by this site.
+## JSON Manipulation
+In the previous example, we sent out request and received JSON data. We can parse those data like this.
+```
+import httplib
+import json
+conn = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
+conn.request('GET', '/posts')
+resp = conn.getresponse()
+data = resp.read()
+dataparsed = json.load(data)
+type(dataparsed)
+# see the difference below
+data[0]
+dataparsed[0]
+```
