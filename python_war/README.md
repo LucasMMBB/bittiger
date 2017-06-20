@@ -370,7 +370,7 @@ Things to notice in the above program:
 1. We imported the Python built in HTTP library `httplib`
 2. Because the website `typicode` uses HTTPS protocol, we used `HTTPSConnection`.
 3. Then sent our request to `/posts` endpoint to request some random data given by this site.
-## JSON Manipulation
+### JSON Manipulation
 In the previous example, we sent out request and received JSON data. We can parse those data like this.
 ```
 import httplib
@@ -384,4 +384,84 @@ type(dataparsed)
 # see the difference below
 data[0]
 dataparsed[0]
+```
+### Multi-threading
+We can easily finish 100 requests in 10 seconds. But it is still not good enough.
+```
+import httplib
+import datetime
+def get_data():
+	conn = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
+	conn.request('GET', '/posts')
+	resp = conn.getresponse()
+	resp.read()
+start = datetime.datetime.now()
+for i in range(100):
+	get_data()
+end = datetime.datetime.now()
+print(end - start)
+```
+As a matter of fact, we have been running our Python program with only one thread, which you can think of as a single worker unit. In modern computers, you can actually leverage more threads to perform work in parallel. This will help us to speed up.
+```
+# Multi-threading
+import httplib
+import threading
+import datetime
+
+def worker():
+	start = datetime.datetime.now()
+	for i in range(100):
+		con = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
+		con.request('GET', '/posts')
+		resp = con.getresponse()
+		resp.read()
+	end = datetime.datetime.now()
+	print("single thread time")
+	print(end - start)
+
+st = datetime.datetime.now()
+for i in range(4):
+	t = threading.Thread(target = worker)
+	t.start()
+ed = datetime.datetime.now()
+print("main thread time: ")
+print(ed - st)
+
+```
+Things to notice in the above example:
+1. We imported Python built-in library `threading`, and we created 5 threads.
+2. All the 4 threads will run simultaneously and executing a target worker function, and might give you 4x speed boost.
+
+The main thread spawns four new threads to work on stuff. And they can work independently.
+
+--- main thread
+| - thread 1
+| - thread 2
+| - thread 3
+| - thread 4
+
+You can actually pass arguments to worker function like this:
+```
+import httplib
+import threading
+import datetime
+
+def worker(num):
+	start = datetime.datetime.now(num)
+	for i in range(100):
+		con = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
+		con.request('GET', '/posts')
+		resp = con.getresponse()
+		resp.read()
+	end = datetime.datetime.now()
+	print("single thread time")
+	print(end - start)
+
+st = datetime.datetime.now()
+for i in range(4):
+	t = threading.Thread(target = worker, args = (100, )))
+	t.start()
+ed = datetime.datetime.now()
+print("main thread time: ")
+print(ed - st)
 ```
