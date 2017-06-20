@@ -357,3 +357,16 @@ gen.next() // error show here if no more elements
 Things to notice in the above program:
 1. `gen` has type of generator rather than list as before.
 2. With generator, you iterate through the values using `next()` method. This allows you to work with huge amount of data without putting too much pressure on you memory.
+### HTTP Networking
+As an awesome programming language, Python has built in support for accessing internet and allow you to grab data without opening up browser. For example, let us say you want to grab data from website <a href="https://jsonplaceholder.typicode.com">jsonplaceholder</a>, which is  a dummy website that can give you random output.
+```
+import httplib
+conn = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
+conn.request('GET', '/posts')
+resp = conn.getresponse()
+data = resp.read()
+```
+Things to notice in the above program:
+1. We imported the Python built in HTTP library `httplib`
+2. Because the website `typicode` uses HTTPS protocol, we used `HTTPSConnection`.
+3. Then sent our request to `/posts` endpoint to request some random data given by this site.
