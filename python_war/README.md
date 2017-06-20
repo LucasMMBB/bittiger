@@ -320,3 +320,40 @@ def test_removetask():
 Things to notice in the above program:
 1. `assert` keyword is used to express some condition must meet. For example, we assert that after adding a new task into schedule, `test` must be in the dictionary of tasks.
 2. Test cases are essentially also Python code. The only thing is that they follow the naming conversion of starting with `test_`.
+
+## Python Advanced
+### List Comprehension
+We have been using Python built-in data structures such as List, Tuple, and Disctionary. They are spuper useful when you need to group data together. Often you want to perform transformation on those collections, for example, filter out certain elements. Of course, you can do this.
+```
+result = []
+original = [1,2,3,4,5]
+for i in original:
+	if i < 3:
+		result.append(i)
+```
+Python provides an awesome mechanism called list comprehension to help you achieve this easily. With list comprehension, you can achieve the previous goal with one line.
+`original = [1,2,3,4,5]`
+`result = [x for x in original if x < 3]`
+Also use it to generate set
+`result = {x for x in original if x < 3}`
+And dictionary
+`result = {x:x for x in original if x < 3}`
+
+With comprehension, you can also play with multiple variables. For example, if you have two sets and you want to generate the product of two sets.
+```
+letters = ['a', 'b', 'c', 'd']
+numbers = [1, 2, 3, 4, 5]
+product  = [(x, y) for x in letters for y in numbers]
+```
+One special case about comprehension is called `generator comprehension`. Run the example below
+```
+a = [1,2,3,4,5]
+gen = (x for x in a if x < 3)
+type(gen)
+gen.next()
+gen.next()
+gen.next() // error show here if no more elements
+```
+Things to notice in the above program:
+1. `gen` has type of generator rather than list as before.
+2. With generator, you iterate through the values using `next()` method. This allows you to work with huge amount of data without putting too much pressure on you memory.
