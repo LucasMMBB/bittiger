@@ -608,5 +608,3 @@ You can reshape them.
 
 The data types in NumPy is different from Python. Because under the hook, NumPy used C or Fortan and it has more powerful representation of data.
 `b.dtype`
-
-#### Panda
