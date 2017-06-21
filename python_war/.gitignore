@@ -1,5 +1,6 @@
 ./env
 *.pyc/
 *.pyc
-
+*.ipynb
+*.ipynb/
 /env

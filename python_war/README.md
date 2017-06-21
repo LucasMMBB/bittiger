@@ -545,8 +545,9 @@ soup = BeautifulSoup(resp.content, 'html.parser')
 links = soup.find_all('a')
 urls = [link.get('href') for link in links]
 ```
-##Practice
+### Practice
 We have learned a lot so far, now let us put them together, and develop a, wait-for-it, wikipedia crawler. Here are some requirements.
 1. Invoke from command line.
 2. Crawl up to certain numbers of links
 3. Avoid re-crawling since there are web pages pointing to each other.
+4. May use Redis to do this
