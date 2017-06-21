@@ -525,3 +525,28 @@ Things to notice in the above program:
 3. The join call in the end will only finish when there's no more task in the queue.
 4. Threads come in two flavors, daemon or non-daemon. The difference is that Python will not exit until all non-daemon threads exit
 5. In order to count how many tasks we have processes so far, we used a counter to keep track of the number of tasks we processed so far. However, dealing with counter is not as easy as in single thread, because there is race condition. Therefore, we used a lock to lock down stuff and make sure only one thread can access that counter at a time.
+
+
+## Python Toolbox - Networking/Crawling
+
+### Requests
+`Requests` is an awesome Python library that is really good at HTTP/HTTPS requests. Use it like this:
+```
+import requests
+resp = requests.get('https://jsonplaceholder.typicode.com/posts')
+```
+### BeautifulSoup
+Use library BeautifulSoup to make data from requests are easy to use. See the following example.
+```
+import requests
+from bs4 import BeautifulSoup
+resp = requests.get('https://en.wikipedia.org/wiki/Main_Page')
+soup = BeautifulSoup(resp.content, 'html.parser')
+links = soup.find_all('a')
+urls = [link.get('href') for link in links]
+```
+##Practice
+We have learned a lot so far, now let us put them together, and develop a, wait-for-it, wikipedia crawler. Here are some requirements.
+1. Invoke from command line.
+2. Crawl up to certain numbers of links
+3. Avoid re-crawling since there are web pages pointing to each other.

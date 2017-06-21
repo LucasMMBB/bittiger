@@ -30,6 +30,7 @@ def worker(i, q):
         task = q.get()
         print('Thread %d working on parsing URL %s' % (i, task))
         new_urls = url_parser(task)
+        print('Parsed url %s ' % task)
         if new_urls != None:
             for new_url in new_urls:
                 q.put(str(new_url))
