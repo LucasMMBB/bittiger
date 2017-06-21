@@ -550,4 +550,63 @@ We have learned a lot so far, now let us put them together, and develop a, wait-
 1. Invoke from command line.
 2. Crawl up to certain numbers of links
 3. Avoid re-crawling since there are web pages pointing to each other.
-4. May use Redis to do this
+4. May use Redis to do
+
+## Python for Data Analytics
+### Table of Content
+- Development Environment
+- Python Toolbox - Data Analytics
+### Development Environment
+In the line of work as Data Analytic, you need to be able to implement huge chunks of code, as well as the ability to quick explore data and reuse some of previous results.
+
+#### Jupyter/IPython
+IPython(Interactive Python) is the tool you are looking for. From the developer experience perspective, it looks like an advanced version of Python built-in interactive shell, where syntax highlighting and auto completion is also provided. Underneath, it also a complete development runtime that also works with things like R, Julia, and Mathematic.
+
+Install and verify version.
+`pip install jupyter`
+`jupyter --version`
+
+In jupyter, your main workspace is called notebook. Notebook, is essentially a web-based application that interacts with Python interpreter. You can start a Jupyter notebook with the following command.
+`jupyter notebook`
+
+You will notice we now have started a webserver at `http://localhost:8888`. From there, we can then create a notebook through web UI.
+
+Now you can play around with it.
+
+### Python Toolbox - Data Analytics
+
+#### NumPy
+
+We discussed how to use Python built-in data types such as list to store data. For example.
+```
+data = [1,2,3,4,5]
+data[2:3]
+```
+As described by the example, Python built-in data types has the ability for basic data storage and indexing. However, as data analytic, you normally need to work with large multi-dimension data. How to quickly manipulate this kind of data is a problem for Python before.
+<a>NumPy</a> is a Python module that allows fast access/manipulation to multi-dimensional array. Because of the performance issue of native Python, people normally use tools like R, or Matlab for number crunching. NumPy is inspired by those tools, and implemented similar functionality in C and Fortan.
+
+Installation
+`pip install numpy`
+
+Quick start
+```
+import numpy as np
+a = np.array([1,2,3])
+type(a)
+```
+Things to notice in the above program:
+1. We used a syntax `import ... as ...`, this is useful when you have multiple imports and you want to use the module name across the program but module name is tooooo long.
+
+In NumPy, all the ndarray has an attibute called shape
+```
+data = [[1,2,3,4],[5,6,7,8]]
+b = np.array(data)
+b.shape
+```
+You can reshape them.
+`b.reshape([4,2])`
+
+The data types in NumPy is different from Python. Because under the hook, NumPy used C or Fortan and it has more powerful representation of data.
+`b.dtype`
+
+#### Panda
