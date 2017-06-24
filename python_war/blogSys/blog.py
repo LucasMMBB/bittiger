@@ -1,11 +1,33 @@
-from flask import Flask
-from flask import render_template
+from flask import (Flask,
+			 url_for,
+			 render_template,
+			 request,
+			 redirect,
+			 session)
 
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
+
+
+class User(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	username = db.Column(db.String(64), index = True)
+	posts = db.relationship('Post', backref = 'author', lazy = 'dynamic')
+
+
+class Post(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	content = db.Column(db.String(600))
+	timestamp = db.Column(db.DateTime)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+db.create_all()
+db.session.commit()
+
+
 
 '''
 index
@@ -42,8 +64,15 @@ def index():
 		nums = nums,
 		blogs = blogs)
 
-@app.route('/signup')
+@app.route('/signup', methods = ['GET', 'POST'])
 def signup():
+	if request.method == 'POST':
+		# - ADD USER
+		username = request.form['username']
+		user = User(username=username)
+		db.session.add(user)
+		db.session.commit()
+		return redirect(url_for('index'))
 	return render_template('signup.html.jinja')
 
 @app.route('/login')
