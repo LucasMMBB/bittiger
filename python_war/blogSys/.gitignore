@@ -1,8 +1,0 @@
-./env
-*.pyc/
-*.pyc
-*.ipynb
-*.ipynb/
-/env
-/sqlite
-/blog.db
