@@ -227,3 +227,19 @@ for(let current of arr){
 	/* current will be the current element */
 }
 ```
+##Functions
+There are a couple of ways to define functions in JS. The common uses are:
+```
+function sum(a, b){
+	return a + b;
+}
+
+var sum = function ( a, b ){
+	return a + b;
+}
+
+// Using the ES6 arrow functions
+let sum = (a, b) => {a+b};
+```
+Then you can call the function like:
+`let result = sum(40, 2);`
