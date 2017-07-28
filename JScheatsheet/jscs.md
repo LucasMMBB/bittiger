@@ -204,3 +204,26 @@ fruits.pop()
 fruits.shift()
 
 ```
+##Iterating over Arrays
+There are few ways to loop through an array.
+```
+// Using for-loop
+for(var index = 0; index < arr.length; ++index){
+	var cur = arr[index];
+}
+
+// Others prefer defining an additional `length` variable
+for(var i = 0, length = arr.length; i < length; ++i){
+	var cur = arr[i];
+}
+
+// Another way i using `forEach`
+arr.forEach((cur, index, inputArray)=>{
+	/* Do something with `current` */
+});
+
+// Or using the for ... of:
+for(let current of arr){
+	/* current will be the current element */
+}
+```
