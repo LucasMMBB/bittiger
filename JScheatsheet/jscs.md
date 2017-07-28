@@ -173,4 +173,34 @@ second = first
 first === second; // true
 
 ```
-<b>Attention</b>: you have no guarantee that adding the object keys in a specific order will get them in the same
+<b>Attention</b>: you have no guarantee that adding the object keys in a specific order will get them in the same. Object keys are not ordered, even in general JavaScript interpreters which will iterate them in the order of adding them in the object(again, do not rely on this feature).
+##Arrays
+In addition to objects, the array data is ordered by indexes. Arrays are actually objects, having the indexes(numbers from `0` to length - 1) as keys.
+```
+let fruits = ['apples', 'pears', 'oranges'];
+
+fruits[1]
+-> "pears"
+```
+##Access, add, remove, and update elements
+```
+let fruits = ['apple'];
+
+// add to the end of the array
+fruits.push('pear');
+fruits;
+// ['apple', 'pear']
+
+// Add to the start of the array
+fruits.unshift('orange')
+
+// splice() adds/removes items to/from an array, and returns the removed items.
+array.splice(index, howmany, item1,...,itemX)
+
+// Remove the last element
+fruits.pop()
+
+// Remove the first element
+fruits.shift()
+
+```
