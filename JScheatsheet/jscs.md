@@ -296,3 +296,6 @@ class Person{
 var p = new Persion('Maoxu Liu');
 console.log(p,getName());
 ```
+It's also very easy to inherit classes in ES6:
+```
+```
