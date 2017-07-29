@@ -243,3 +243,56 @@ let sum = (a, b) => {a+b};
 ```
 Then you can call the function like:
 `let result = sum(40, 2);`
+##Constructors and Classes
+There are a couple of ways you can obtain a class-like functionality in JS.
+###Factory functions
+Creating an object and returning it.
+```
+function Persion(name){
+	var self = {};
+
+	// Public field
+	self.name = name;
+
+	// Public method
+	self.getName = function(){
+		return this.name;
+	}
+
+	return self;
+}
+
+var p = Persion("Maoxu");
+console.log(p.getName());
+```
+###Using `prototype`s
+By adding a method in the `prototype` object of a function, you're adding that  method as a public method to all the instances of that class.
+```
+function Person (name) {
+  this.name = name;
+}
+
+Person.prototype.getName = function () {
+  // `this` is the `self`
+  return this.name;
+};
+
+var p = new Person("Bob");
+console.log(p.getName());
+// => "Bob"
+```
+###Using ES6 `class`
+```
+class Person{
+	constructor(name){
+		this.name = name;
+	}
+
+	getName(){
+		return this.name;
+	}
+}
+
+var p = new Persion('Maoxu Liu');
+console.log(p,getName());
+```
