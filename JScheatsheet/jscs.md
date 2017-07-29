@@ -293,9 +293,40 @@ class Person{
 	}
 }
 
-var p = new Persion('Maoxu Liu');
+var p = new Person('Maoxu Liu');
 console.log(p,getName());
 ```
 It's also very easy to inherit classes in ES6:
 ```
+class Person{
+	constructor(name){
+		this.name = name;
+	}
+
+	getName(){
+		return this.name;
+	}
+}
+
+class Musician extends Person {
+   constructor (name, instrument) {
+     // Call the base class
+     super(name);
+
+     this.instrument = instrument;
+   }
+
+   play () {
+     console.log(`${this.getName()} is playing ${this.instrument}`);
+   }
+}
+
+var me = new Musician("Johnny B.", "piano");
+
+// Get the name of the musician, who is also a person
+console.log(me.getName());
+// => "Johnny B."
+
+me.play();
+// => "Johnny B. is playing piano."
 ```
