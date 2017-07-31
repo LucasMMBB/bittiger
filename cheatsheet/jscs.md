@@ -10,7 +10,7 @@ a multi-line
 comment
 */
 ```
-##Variables
+## Variables
 You can create variables using var, let, const(the last two are available only in ES6)
 Variable names can't start with a number or contain spaces. They can contain letters, numbers, underscores, or $. Variable names are case sensitive.
 ```
@@ -78,7 +78,7 @@ for(let i = 0; i < 7; i++){
 }
 ```
 
-##How does `const` work?
+## How does `const` work?
 `const` is simple: you can use it for variables whose values remain the same.
 ```
 const pi = 3.14
@@ -102,7 +102,7 @@ myObj = {}
 -> TypeError: Assignment to constant variable
 
 ```
-##`if` statements
+## `if` statements
 Use `if (expression){...}else{...}` to do something if `expression` is true or not.
 ```
 let foo = 42;
@@ -143,14 +143,14 @@ switch (planet) {
 }
 ```
 
-##Primitive types
+## Primitive types
 The following ones, are primitives:
 - Booleans: `false`, `true`
 - Numbers: `42`, `3.14`, `0b1101b`, `0x16`, `NaN`
 - Strings: `mars`
 - Special values: `undefined`, `null`
 
-##Objects
+## Objects
 The common way to declare objects is by using the curly braces:
 ```
 let myObj = {world: 'Earch'}
@@ -174,7 +174,7 @@ first === second; // true
 
 ```
 <b>Attention</b>: you have no guarantee that adding the object keys in a specific order will get them in the same. Object keys are not ordered, even in general JavaScript interpreters which will iterate them in the order of adding them in the object(again, do not rely on this feature).
-##Arrays
+## Arrays
 In addition to objects, the array data is ordered by indexes. Arrays are actually objects, having the indexes(numbers from `0` to length - 1) as keys.
 ```
 let fruits = ['apples', 'pears', 'oranges'];
@@ -182,7 +182,7 @@ let fruits = ['apples', 'pears', 'oranges'];
 fruits[1]
 -> "pears"
 ```
-##Access, add, remove, and update elements
+## Access, add, remove, and update elements
 ```
 let fruits = ['apple'];
 
@@ -204,7 +204,7 @@ fruits.pop()
 fruits.shift()
 
 ```
-##Iterating over Arrays
+## Iterating over Arrays
 There are few ways to loop through an array.
 ```
 // Using for-loop
@@ -227,7 +227,7 @@ for(let current of arr){
 	/* current will be the current element */
 }
 ```
-##Functions
+## Functions
 There are a couple of ways to define functions in JS. The common uses are:
 ```
 function sum(a, b){
@@ -243,9 +243,9 @@ let sum = (a, b) => {a+b};
 ```
 Then you can call the function like:
 `let result = sum(40, 2);`
-##Constructors and Classes
+## Constructors and Classes
 There are a couple of ways you can obtain a class-like functionality in JS.
-###Factory functions
+### Factory functions
 Creating an object and returning it.
 ```
 function Persion(name){
@@ -265,7 +265,7 @@ function Persion(name){
 var p = Persion("Maoxu");
 console.log(p.getName());
 ```
-###Using `prototype`s
+### Using `prototype`s
 By adding a method in the `prototype` object of a function, you're adding that  method as a public method to all the instances of that class.
 ```
 function Person (name) {
@@ -281,7 +281,7 @@ var p = new Person("Bob");
 console.log(p.getName());
 // => "Bob"
 ```
-###Using ES6 `class`
+### Using ES6 `class`
 ```
 class Person{
 	constructor(name){

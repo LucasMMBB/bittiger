@@ -1,12 +1,12 @@
-#VIM TUTORIAL
-##Super Basic Starter
+# VIM TUTORIAL
+## Super Basic Starter
 Tare two modes in vime: COMMAND MODE and INSERT MODE
-##Moving the Cursor
--`h`-left
--`k`-Up
--`l`-Right
--`j`-Down
-##Exiting Vim
+## Moving the Cursor
+- `h`-left
+- `k`-Up
+- `l`-Right
+- `j`-Down
+## Exiting Vim
 - quit: `:q`
 - quit and discard changes: `:q!`
 - quit and save changes: `:wq`
@@ -26,5 +26,11 @@ When to put together, the Vim Command will look something like:
 ```
 [OPERATOR][NUMBER][MOTION]
 ```
-......TO BE CONTINUED.
-```
+
+## Quick Page Navigation
+- `G` Move to the bottom of a file
+- `gg` Move to the start of a file
+- `ctrl+g` View your current page line with
+- `123+G` Jump to a specific line
+## Searching
+
