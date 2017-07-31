@@ -17,4 +17,14 @@ use `x` to delete letters in COMMAND MODE, which is more powerful
 `a` puts the cursor after the current position
 `o` puts the cursor below the line
 `O` puts the cursor above the line
-
+##Operators and Motions, Counts, and Combining Them
+It's a good idea to learn how commands work, not memorize commands. Commands are broken down into these parts:
+- Operator
+- Numbers
+- Motions
+When to put together, the Vim Command will look something like:
+```
+[OPERATOR][NUMBER][MOTION]
+```
+......TO BE CONTINUED.
+```
