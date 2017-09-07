@@ -1,0 +1,2 @@
+OK: step1 100ms step2 120ms step3 400ms step4 200ms total 1000ms
+ERROR: step1 200ms step2 100ms total 1500ms
