@@ -82,3 +82,14 @@ class Car(object):
 	def make_car_sound():
 		print "VRoooommmmm!" 
 ```
+### Class methods
+A variant of the static method is the class method. Instead of recieving the instance as the first parameter, it is passed the class. It is also defined using a decorator:
+```python
+class Vehicle(object):
+	...
+	@classmethod
+	def is_motorcycle(cls):
+		return cls.wheels == 2
+```
+Class methods may not make much sense right now, but that's because they're used most often in connection with our next topic: inheritance
+## Inheritance
