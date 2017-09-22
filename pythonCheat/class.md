@@ -178,7 +178,7 @@ class Truck(object):
 Well, That's almost identical to the car class. One of the most important rules of programming is "DRY" or "Don't Repeat Yourself". We've definitely repeated ourselves here. In fact, the `Car` and `Truck` classes differ only by a single characters
 
 So what gives? Where did we go wrong? Our main problem is that we raced straight to the concrete: `Car` and `Truck` are real things, tangible objects that make intuitive sense as classes. However, they share so much data and functionality in common that it seems there must be an abstraction we can introduce here. Indeed there is: the notion of `Vehicle`s
-## Abstract Classes
+### Abstract Classes
 A `Vehicle` is not a real-world object. Rather, it is a concept that some real-world objects(like cars, trucks, and motorcycles) embody. We would like to use the fact that each of these objects can be considered a vehicle to remove repeated code. We can do that by creating a `Vehicle` class:
 ```python
 class Vehicle(object):
@@ -259,7 +259,6 @@ It makes sense to disallow this, as we never meant for vehicles to be used direc
 
 ```python
 from abc import ABCMeta, abstractmethod
-
 class Vehicle(object):
     """A vehicle for sale by Jeffco Car Dealership.
 
@@ -276,6 +275,14 @@ class Vehicle(object):
     __metaclass__ = ABCMeta
 
     base_sale_price = 0
+    wheels = 0
+
+    def __init__(self, miles, make, model, year, sold_on):
+        self.miles = miles
+        self.make = make
+        self.model = model
+        self.year = year
+        self.sold_on = sold_on
 
     def sale_price(self):
         """Return the sale price for this vehicle as a float amount."""
@@ -290,8 +297,33 @@ class Vehicle(object):
         return self.base_sale_price - (.10 * self.miles)
 
     @abstractmethod
-    def vehicle_type():
+    def vehicle_type(self):
         """"Return a string representing the type of vehicle this is."""
         pass
 ```
-Now,since
+
+Now `Car` and `Truck` classes become:
+```python
+class Car(Vehicle):
+    """A car for sale by Jeffco Car Dealership."""
+
+    base_sale_price = 8000
+    wheels = 4
+
+    def vehicle_type(self):
+        """"Return a string representing the type of vehicle this is."""
+        return 'car'
+
+class Truck(Vehicle):
+    """A truck for sale by Jeffco Car Dealership."""
+
+    base_sale_price = 10000
+    wheels = 4
+
+    def vehicle_type(self):
+        """"Return a string representing the type of vehicle this is."""
+        return 'truck'
+
+```
+## Inheritance and the LSP
+Even though it seems like we used inheritance to get rid of duplication, what we were really doing was simply providing the proper level of abstraction. And abstraction is the key to understanding inheritance. We've seen how one side-effect of using inheritance is that we reduce duplicated code, but what about from the caller's perspective. How does using inheritance change the code?
