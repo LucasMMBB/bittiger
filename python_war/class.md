@@ -30,4 +30,9 @@ class Customer(object):
 
 ```
 The `class Customer(object)` line does not create a new customer. That is, just because we've defined a `Customer` doesn't mean we've created one.
-So, to use the blueprint that we created by defining the 
+So, to use the blueprint that we created by defining the `class Customer`, we call the class name almost as if it were a function:
+`jeff = Customer('Jeff', 1000)`.
+This line simply says that a new cutomer who is called "Jeff" and have balence 1000 dollars has been created
+
+The `Jeff` object, known as an instance, is the relized version of the `Customer` class.
+## Self?
