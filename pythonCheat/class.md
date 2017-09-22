@@ -93,3 +93,88 @@ class Vehicle(object):
 ```
 Class methods may not make much sense right now, but that's because they're used most often in connection with our next topic: inheritance
 ## Inheritance
+While Object-oriented Programming is useful as a modeling tool, it truly gains power when the concept of inheritance is introduced. Inherticance is the process by which a "child" class derives the data and behavior of a "parent" class. An example will definitely help us here.
+
+Imagine we run a car dealership. We sell all types of vehicles, from motorcyles to trucks. We set ourselves apart from the competition by prices. Specially, how we determine the price of a vehicle on our lot: $5000 x number of wheels a vehicle has. We love buying back our vehicles as well. We offer a flat rate - 10% of the miles driven on the vehicle. For trucks, that flat rage is $10,000. For cars, $8000. For motorcycles, $4000.
+
+If we wanted to create a sales system for our dealership using Object-oriented techniques, how would we do so? What would the object be? We might have a SALE class, a Customer class, an Inventory class, and so forth, but we'd almost certainly have a CAR, TRUCK, and MOTORCYCLE class
+
+What would these classes look like? Using we've talked, here of a possible implementation of the `Car` class:
+```python
+class Car(object):
+	"""A car sale by Maoxu Car Dealership
+
+	Attributes:
+		wheels: An integer representing the number of the car has
+		miles: The integral number of miles driven on the car
+		make: The make of the car as a string
+		model: The model of the car as a string
+		year: The integral year the car was built
+		sold_on: The date the vehicle was sold
+	"""
+
+	def __init__(self, wheels, miles, make, model, year, sold_on):
+		"""Return a new Car Oject"""
+		self.wheels = wheels
+		self.miles = miles
+		self.make = make
+		self.model = model
+		self.year = year
+		self.sold_on = sold_on
+
+	def sale_prive(self):
+		"""Return the sale price for this car as a float number"""
+		if self.sold_on is not None:
+			return 0.0 # Alreay sold on
+		return 5000.0 * self.wheels
+
+	def purchase_price(self):
+		"""Return the price for which we would pay to purchase the car."""
+		if self.sold_on is None:
+			return 0.0 # Not sold yet
+		return 8000 - (0.1 * self.miles)
+	... # to be continue
+```
+OK, that looks pretty reasonable. Of course, we would likely have a number of other methods on the class, but I've shown two of particular interests to us: `sale_price` and `purchase_price`. We'll see why these are important a bit.
+
+Now that we've got the `Car` class, perhaps we should create a `Truck` class? Let's follow the same pattern we did for the car:
+```python
+class Truck(object):
+    """A truck for sale by Jeffco Car Dealership.
+
+    Attributes:
+        wheels: An integer representing the number of wheels the truck has.
+        miles: The integral number of miles driven on the truck.
+        make: The make of the truck as a string.
+        model: The model of the truck as a string.
+        year: The integral year the truck was built.
+        sold_on: The date the vehicle was sold.
+    """
+
+    def __init__(self, wheels, miles, make, model, year, sold_on):
+        """Return a new Truck object."""
+        self.wheels = wheels
+        self.miles = miles
+        self.make = make
+        self.model = model
+        self.year = year
+        self.sold_on = sold_on
+
+    def sale_price(self):
+        """Return the sale price for this truck as a float amount."""
+        if self.sold_on is not None:
+            return 0.0  # Already sold
+        return 5000.0 * self.wheels
+
+    def purchase_price(self):
+        """Return the price for which we would pay to purchase the truck."""
+        if self.sold_on is None:
+            return 0.0  # Not yet sold
+        return 10000 - (.10 * self.miles)
+
+    ...
+
+```
+Well, That's almost identical to the car class. One of the most important rules of programming is "DRY" or "Don't Repeat Yourself". We've definitely repeated ourselves here. In fact, the `Car` and `Truck` classes differ only by a single characters
+
+So what gives? Where did we go wrong? Our main problem is that we raced straight to the concrete: `Car` and `Truck` are real things, tangible objects that make intuitive sense as classes. However, they share so much data and functionality in common that it seems there must be an abstraction we can introduce here. Indeed there is: the notion of `Vehicle`s
