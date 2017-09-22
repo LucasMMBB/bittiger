@@ -36,3 +36,11 @@ This line simply says that a new cutomer who is called "Jeff" and have balence 1
 
 The `Jeff` object, known as an instance, is the relized version of the `Customer` class.
 ## Self?
+So what is `Self`? The self means that it points to current instance.\
+```python
+# Example
+Maoxu = Customer("maoxu", 100000) # self points to Maoxu
+```
+## `__init__`
+After `__init__` has finished, the caller can rightly assume that the object is ready to use. That is we can start making `deposit` and `withdraw` calls on `jeff`; `jeff` is a fully-initialized object.
+<b>Don't introduce a new attribule outside of `__init__`method</b>
