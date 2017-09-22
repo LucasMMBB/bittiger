@@ -44,3 +44,41 @@ Maoxu = Customer("maoxu", 100000) # self points to Maoxu
 ## `__init__`
 After `__init__` has finished, the caller can rightly assume that the object is ready to use. That is we can start making `deposit` and `withdraw` calls on `jeff`; `jeff` is a fully-initialized object.
 <b>Don't introduce a new attribule outside of `__init__`method</b>
+## Instance Attributes and Methods
+An function defined in a class is called a "method". Methods have access to all the data contained on the instance of the object; they can access and modify anything previously set on `self`. Because they use `self`, they require an instance of the class in order to be used. For this reason, they're often referred as "instance methods".
+If there are "instance methods", then surely there are other types of methods as well. Yes, there are, but these methods are a bit more esoteric. We'll cover them briefly here.
+### Static Methods
+`Class attributes` are attributes that are set at the `class-level`, as opposed to the `instance-level`. Normal attributes are introduced in the `__init__` method, but some attributes of a class hold for all instances in all cases. For example, consider the following definition of a `Car` object:
+```python
+class Car(object):
+
+    wheels = 4
+
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+    def test(self):
+    	print self.wheels
+mustang = Car('Ford', 'Mustang')
+mustang.test()
+#print mustang.wheels # 4
+#print Car.wheels # 4
+```
+A `Car` always has four wheels, regardless of the `make` or `model`. Instance methods can access these attributes in the same way they access regular attributes(like self.wheels)
+There is a class of methods, though, called static methods, that don't have access to self. Just like class attributes, they are methods that work without requiring an instance to be present. Since instances are always referenced through self, static methods have no self parameter.
+The following would be a valid static method on the `Car` class:
+```python
+class Car(object):
+	...
+	def make_car_sound():
+		print 'VRooommm!'
+```
+No matter what kind of car we have, it always makes the same sound.
+To make it clear that this method should not receive the instance as the firsts parameter, the `@staticmethod` decorator is used, turning our definition into:
+```python
+class Car(object):
+	...
+	@staticmethod
+	def make_car_sound():
+		print "VRoooommmmm!" 
+```
