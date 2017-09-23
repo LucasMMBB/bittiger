@@ -327,3 +327,22 @@ class Truck(Vehicle):
 ```
 ## Inheritance and the LSP
 Even though it seems like we used inheritance to get rid of duplication, what we were really doing was simply providing the proper level of abstraction. And abstraction is the key to understanding inheritance. We've seen how one side-effect of using inheritance is that we reduce duplicated code, but what about from the caller's perspective. How does using inheritance change the code?
+
+Quite a bit, it turns out. Imagine we have two classes, Dog and Person, and we want to write a function that takes either type of object and prints out whether or not the instance in question can speak (a dog can't, a person can). We might write code like the following:
+```python
+def can_speak(animal):
+    if isinstance(animal, Person):
+        return True
+    elif isinstance(animal, Dog):
+        return False
+    else:
+        raise RuntimeError('Unknown animal!')
+```
+That works when we only have two types of animals, but what if we have twenty, or two hundred? That if...elif chain is going to get quite long.
+
+The key insight here is that can_speak shouldn't care what type of animal it's dealing with, the animal class itself should tell us if it can speak. By introducing a common base class, Animal, that defines can_speak, we relieve the function of it's type-checking burden. Now, as long as it knows it was an Animal that was passed in, determining if it can speak is trivial:
+```python
+def can_speak(animal):
+	return animal.can_speak()
+```
+This works because Person and Dog (and whatever other classes we crate to derive from Animal) follow the Liskov Substitution Principle. This states that we should be able to use a child class (like Person or Dog) wherever a parent class (Animal) is expected an everything will work fine. This sounds simple, but it is the basis for a powerful concept we'll discuss in a future article: interfaces.
