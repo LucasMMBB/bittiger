@@ -4,4 +4,4 @@
 *.ipynb
 *.ipynb/
 /env
-pytest.py
+pytest.py/
