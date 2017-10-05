@@ -22,7 +22,7 @@ requirements:
 -  take two user input
 -  if they are int type, add them up and print
 
-```
+```python
 def add(a, b):
 	if type(a) is int and type(b) is int:
 		print(a + b)
@@ -63,7 +63,7 @@ And finally you can pip install packages locally which will be located in that e
 if you want to put whatever Python statements you typed into a file and call it something end up in .py, you have a Python module.
 
 For example, let's create a Python module file called `cal.py` and put code
-```
+```python
 # two sum
 def add(a, b):
 	if type(a) is int and type(b) is int:
@@ -97,7 +97,7 @@ Firstly, here is an observation about programming. Programming is about two thin
 Now say you want to store and retrieve task data, how would you do it? For example, you can do thi.
 1. Store task data as plain string
 2. Use list, tuple, or set to store collection of task data
-```
+```python
 s1 = 'work schedule'
 s2 = 'personal schedule'
 s3 = 'vacation schedule'
@@ -107,7 +107,7 @@ schedule = [s1, s2, s3]
 There is nothing wrong about this approach, and even works well in simple cases. But what would happen if you have more attributes, such as priority to add. Your old code won't be able to recognize those new attributes, because the data stored are to <b>free-form</b>
 
 Therefore it would be nice to bring some structure to store your data. That is why OOP is useful. In Python, you can define a class like this.
-```
+```python
 class Schedule(object):
 
 	name = None
@@ -130,7 +130,7 @@ Things to notice in the above program:
 4. __name__ and __desp__ are the member variables of class Schedule.
 
 Once we defined a class, we can then initialize Schedule objects.
-```
+```python
 s1 = Schedule('s1', 'work schedule')
 s2 = Schedule('s2', 'personal schedule')
 s3 = Schedule('s3', 'vacation schedule')
@@ -143,7 +143,7 @@ Things to notice in the above program:
 2.__self__ is a particular variable, it points to the object itself.
 
 Just printing information is not particular useful for a class, we can add more functionality to it by adding more methods:
-```
+```python
 class Schedule(object):
 
 	name = None
@@ -185,7 +185,7 @@ In the above code, we beefed up Schedule class to help the ability of add_task a
 
 ### Decorator
 In Python, functions are first-class objects as well, which means that you can pass functions around and use them as arguments for other functions.
-```
+```python
 def answer():
 	def give42():
 		return 42
@@ -198,7 +198,7 @@ print(answer()())
 print(a())
 ```
 As you can see, functions in Python is exactly like other projects like number, string, ets. The difference is that functions can be invoked with `()` syntax. With this in mind, we shouldn't be surprised about this.
-```
+```python
 def display_decorator(func):
 	def wrapper():
 		print('before func')
@@ -213,7 +213,7 @@ display_decorator(test_func)()
 ```
 This mechanism of wrapping a function and modify its behaviour before and after that function is called decorator.
 Python actually provides a special syntax for the ease of decorator.
-```
+```python
 from datetime import datetime
 
 def displaytime_decorator(func):
@@ -270,7 +270,7 @@ Things to notice in the above program:
 Our schedule keeping app works fine, but it can't store the state of existing schedules. We need to store the data not in memory, but in a persist location, for example, file system.
 
 Unlike other languages, working with file is very easy in Python. For example, if you want to read the content of a file.
-```
+```python
 with open ('text.txt', 'r') as f:
 	data = f.read()
 ``` 
@@ -278,7 +278,7 @@ Things to notice in the above program:
 1. Notice in the open function call, besides the path to the file, we also used `r` meaning that we just want to read the content, any write operation to that file will cause error.
 ### Error and Exception
 Python and all other languages provide mechanism to allow you to address these issues through `Exception`. You can catch exceptions using:
-```
+```python
 try:
 	# - awesome code goes here
 except Exception as e:
@@ -291,7 +291,7 @@ Things to notice in the above program:
 2.  `Exception` is a predefined base class in Python, it represents <b>ALL</b> exceptions. So sometimes it is too broad.
 
 You can customize and define more fine-grained exceptions.
-```
+```python
 class AwesomeException(Exception):
 	"""docstring for AwesomeException"""
 	def __init__(self, *args, **kwargs):
@@ -301,7 +301,7 @@ raise AwesomeException('here is an error')
 ```
 ### Testing
 In Python there are numerous testing frameworks that can help you write test cases. For example, with pytest. You can express test cases like this.
-```
+```python
 from scheduler import Schedule
 
 def test_addtask():
@@ -324,7 +324,7 @@ Things to notice in the above program:
 ## Python Advanced
 ### List Comprehension
 We have been using Python built-in data structures such as List, Tuple, and Disctionary. They are spuper useful when you need to group data together. Often you want to perform transformation on those collections, for example, filter out certain elements. Of course, you can do this.
-```
+```python
 result = []
 original = [1,2,3,4,5]
 for i in original:
@@ -340,13 +340,13 @@ And dictionary
 `result = {x:x for x in original if x < 3}`
 
 With comprehension, you can also play with multiple variables. For example, if you have two sets and you want to generate the product of two sets.
-```
+```python
 letters = ['a', 'b', 'c', 'd']
 numbers = [1, 2, 3, 4, 5]
 product  = [(x, y) for x in letters for y in numbers]
 ```
 One special case about comprehension is called `generator comprehension`. Run the example below
-```
+```python
 a = [1,2,3,4,5]
 gen = (x for x in a if x < 3)
 type(gen)
@@ -359,7 +359,7 @@ Things to notice in the above program:
 2. With generator, you iterate through the values using `next()` method. This allows you to work with huge amount of data without putting too much pressure on you memory.
 ### HTTP Networking
 As an awesome programming language, Python has built in support for accessing internet and allow you to grab data without opening up browser. For example, let us say you want to grab data from website <a href="https://jsonplaceholder.typicode.com">jsonplaceholder</a>, which is  a dummy website that can give you random output.
-```
+```python
 import httplib
 conn = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
 conn.request('GET', '/posts')
@@ -372,7 +372,7 @@ Things to notice in the above program:
 3. Then sent our request to `/posts` endpoint to request some random data given by this site.
 ### JSON Manipulation
 In the previous example, we sent out request and received JSON data. We can parse those data like this.
-```
+```python
 import httplib
 import json
 conn = httplib.HTTPSConnection('jsonplaceholder.typicode.com')
@@ -387,7 +387,7 @@ dataparsed[0]
 ```
 ### Multi-threading
 We can easily finish 100 requests in 10 seconds. But it is still not good enough.
-```
+```python
 import httplib
 import datetime
 def get_data():
@@ -402,7 +402,7 @@ end = datetime.datetime.now()
 print(end - start)
 ```
 As a matter of fact, we have been running our Python program with only one thread, which you can think of as a single worker unit. In modern computers, you can actually leverage more threads to perform work in parallel. This will help us to speed up.
-```
+```python
 ### Multi-threading
 import httplib
 import threading
@@ -441,7 +441,7 @@ The main thread spawns four new threads to work on stuff. And they can work inde
 | - thread 4
 
 You can actually pass arguments to worker function like this:
-```
+```python
 import httplib
 import threading
 import datetime
@@ -475,7 +475,7 @@ Any  website is built with many inter-connected pages. For example, the front pa
 		| - page 3
 
 So when you performing crawling with 4 thread, how do you assign a URL to a specific thread for processing? You basically have a huge collection of tasks that are generating new tasks and a pool of resources to perform the tasks, this kind of problem is normally called `Producer-Consumer Problem`. One way to solve this is to use thread-safe FIFO queue.
-```
+```python
 import Queue
 
 q = Queue.Queue()
@@ -485,7 +485,7 @@ while not q.empty():
 	print(q.get())
 ```
 You can think of a queue as a mailbox, whenever there is a new task, just drop into mailbox, and whoever is ready to work on the new task, just go and get a task from the mailbox. With this idea in mind, we can try to solve `Producer-Consumer Problem`.
-```
+```python
 import Queue
 import random
 import threading
@@ -531,13 +531,13 @@ Things to notice in the above program:
 
 ### Requests
 `Requests` is an awesome Python library that is really good at HTTP/HTTPS requests. Use it like this:
-```
+```python
 import requests
 resp = requests.get('https://jsonplaceholder.typicode.com/posts')
 ```
 ### BeautifulSoup
 Use library BeautifulSoup to make data from requests are easy to use. See the following example.
-```
+```python
 import requests
 from bs4 import BeautifulSoup
 resp = requests.get('https://en.wikipedia.org/wiki/Main_Page')
@@ -589,7 +589,7 @@ Installation
 `pip install numpy`
 
 Quick start
-```
+```python
 import numpy as np
 a = np.array([1,2,3])
 type(a)
@@ -598,7 +598,7 @@ Things to notice in the above program:
 1. We used a syntax `import ... as ...`, this is useful when you have multiple imports and you want to use the module name across the program but module name is tooooo long.
 
 In NumPy, all the ndarray has an attibute called shape
-```
+```python
 data = [[1,2,3,4],[5,6,7,8]]
 b = np.array(data)
 b.shape
