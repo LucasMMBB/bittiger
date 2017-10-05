@@ -44,6 +44,14 @@ Maoxu = Customer("maoxu", 100000) # self points to Maoxu
 ## `__init__`
 After `__init__` has finished, the caller can rightly assume that the object is ready to use. That is we can start making `deposit` and `withdraw` calls on `jeff`; `jeff` is a fully-initialized object.
 <b>Don't introduce a new attribule outside of `__init__`method</b>
+## Built-in Class Attributes
+Every Python Class keeps following built-in attributes and they can be accessed using dot operator like any other attribute
+- `__dict__`: Dictionary containing the class's namespace.
+- `__doc__`: Class documentation string or none, if undefined
+- `__name__`: Class name
+- `__module__`: Module name in which the class is defined. This attribute is "__main__" in interactive mode
+- `__bases__`: A possibly empty tuple containing the base classes, in the order of their occurrence in the base class list.
+
 ## Instance Attributes and Methods
 An function defined in a class is called a "method". Methods have access to all the data contained on the instance of the object; they can access and modify anything previously set on `self`. Because they use `self`, they require an instance of the class in order to be used. For this reason, they're often referred as "instance methods".
 If there are "instance methods", then surely there are other types of methods as well. Yes, there are, but these methods are a bit more esoteric. We'll cover them briefly here.
@@ -346,3 +354,19 @@ def can_speak(animal):
 	return animal.can_speak()
 ```
 This works because Person and Dog (and whatever other classes we crate to derive from Animal) follow the Liskov Substitution Principle. This states that we should be able to use a child class (like Person or Dog) wherever a parent class (Animal) is expected an everything will work fine. This sounds simple, but it is the basis for a powerful concept we'll discuss in a future article: interfaces.
+
+## Destroying Objects(Garbage Collection)
+Python deletes unneeded objects(built-in types or class instances) automatically to free the memory space. The process by which Python periodically reclaims blocks of memory that no longer are in use is termed Carbage Collection.
+
+Python's garbage collector runs during program execution and is triggered when an object's reference count reaches zero. An object's reference count changes as the number of aliases that point to it changes.
+
+An object's reference count increase when it is assigned a new name or placed in a container. The object's reference count decrease when it's deleted with del, its reference is reassigned, or its reference goes out of scope. When an object's reference count reaches zero, Python collects it automatically.
+```python
+a = 40      # Create object <40>
+b = a       # Increase ref. count  of <40> 
+c = [b]     # Increase ref. count  of <40> 
+
+del a       # Decrease ref. count  of <40>
+b = 100     # Decrease ref. count  of <40> 
+c[0] = -1   # Decrease ref. count  of <40> 
+```
