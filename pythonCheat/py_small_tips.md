@@ -5,7 +5,7 @@ There are so many good and easy places in Python. I list some of them. Hope it m
 
 `x, y = y, x`
 #### Tip2. Compare Operators can be combined
-```ython
+```python
 x = 10
 print 1 < x < 20
 # true
@@ -19,6 +19,9 @@ print 1 < x < 20
 multiStr = ("This is xxx from"
 " umich"
 " Hello there")
+
+print multiStr
+# This is xxx from umich Hello there
 ```
 #### Tip5. assign multi vars by list
 ```python
@@ -63,7 +66,7 @@ print dir(str)
 
 '__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 ```
-#### Tip11. simpify if
+#### Tip11. simpify if sentence
 `if m in [1, 2, 3]`
 instead of
 `if m == 1 or m == 2 or m == 3`
@@ -77,7 +80,7 @@ print "".join(str)
 def method():
 	return "a", "b", "c", "d"
 
-print method
+print method()
 ```
 #### Tip14. Use dict to store lambda
 ```python
