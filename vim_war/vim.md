@@ -101,3 +101,26 @@ We can also move by word:
 * e : move to the end of your word
 
 When you use uppercase you ignore some delimiters within a string that may break it into two words.
+* W : move forward one big word
+* B : move back one big word
+
+This uppercasing of a given command having different and more powerful effects is something we'll see frequently.
+
+*Moving by sentence or paragraph*
+* ) : move forward one sentence
+* } : move forward one paragraph
+
+*Moving within the screen*
+* H : move to the top of the screen
+* M : move to the bottom of the screen
+* L : move to the bottom of the screen
+* gg : go to the bottom of the file
+* G : go to the bottom of the file
+* ^U : move up half a screen
+* ^D : move down half a screen
+* ^F : page down
+* ^B : page up
+
+## change text
+We've done a bunch of moving within our text. Now let's make some changes. The first thing to remember is that the motions will always be with us - they're part of the language(they're modifiers in the VOCABULARY ABOVE).
+ 
