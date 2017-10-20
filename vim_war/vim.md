@@ -57,10 +57,47 @@ Some quick basics on working with your file.
 * ZZ : a faster way to day :wq
 So we can use `:wq`, `ZZ` and `:X`
 
-**SEARCHING YOUR TEXT**
+### SEARCHING YOUR TEXT
 One of the first things you need to be able to do with an editor is find text you're looking for. Vim has extremely powerful search capabilities, and we'll talk about some of them now.
 
 *Searching by string*
 One of most basic and powerful ways to search in vim is to enter "/" command, which takes you to the bottom of your window, and then type what you're looking for and press ENTER
 
 Once you've done your search, you can press "n" to go to the next instance of the result, or "N" to go to the previous one. You can also start by searching backward by using "?" instead of "/".
+
+*A search reference*
+* /{string} : search for stirng
+* t : jump up to a character
+* f : jump onto a character
+* `*` :  search for other instances of the word under your cursor
+* n : go to the next instance when you've searched for a string
+* N : go to the previous instance when you've searched for a string
+* `;` : go to the next instance when you've jumped to a character
+* `,` : go to the previous instance when you've jumped to a character.
+
+
+### MOVING AROUND IN YOUR TEXT
+Getting around within your text is critical to productivity. With vim this is both simple and elegant, as it leverates the core principal of VIM AS LANGUAGE that we talked about above. First, some basics.
+
+*Basic motions*
+We start with use of the home row. Typists are trained to keep their right hand on the j, k, l, and ";" keys, and this is the starting point for using vim as well.
+* j : move down one line
+* k : move up one line
+* h : move left one character
+* l : move right one character
+
+*Moving within the line*
+You can easily move within the line you're on.
+* 0 : move to the beginning of the line.
+* $ : move to the end of the line
+* ^ : move to the first non-blank character in the line
+* t" : jump to the right before next quotes
+* f" : jump and land on the next quotes
+
+*Moving by word*
+We can also move by word:
+* w : move forward one word
+* b : move back one word
+* e : move to the end of your word
+
+When you use uppercase you ignore some delimiters within a string that may break it into two words.
