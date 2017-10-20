@@ -1,4 +1,9 @@
 # VIM TUTORIAL
+I found this tutorial online and I modified it. I believe that I should share it with you all
+
+## vimtutor
+Before i introduce vim. I want to mention the official vim documentation. Use command line `vimtutor` to check it.
+
 ## Super Basic Starter
 Tare two modes in vime: COMMAND MODE and INSERT MODE
 
@@ -38,13 +43,17 @@ With vim it's the same. Here are some vim nouns:
 
 Now we can start to build sentences
 Delete two words
+```vim
 d2w
-
+```
 Change inside sentence
+```vim
 cis
-
+```
 Yank inside paragraph(copy the paragraph you're in)
+```vim
 yip
+```
 ## Get Things Done
 Now let's do some basics
 **WORKING WITH YOUR FILE**
@@ -57,15 +66,15 @@ Some quick basics on working with your file.
 * ZZ : a faster way to day :wq
 So we can use `:wq`, `ZZ` and `:X`
 
-### SEARCHING YOUR TEXT
+### Searching your text
 One of the first things you need to be able to do with an editor is find text you're looking for. Vim has extremely powerful search capabilities, and we'll talk about some of them now.
 
-*Searching by string*
+**Searching by string**
 One of most basic and powerful ways to search in vim is to enter "/" command, which takes you to the bottom of your window, and then type what you're looking for and press ENTER
 
 Once you've done your search, you can press "n" to go to the next instance of the result, or "N" to go to the previous one. You can also start by searching backward by using "?" instead of "/".
 
-*A search reference*
+**A search reference**
 * /{string} : search for stirng
 * t : jump up to a character
 * f : jump onto a character
@@ -79,14 +88,14 @@ Once you've done your search, you can press "n" to go to the next instance of th
 ### MOVING AROUND IN YOUR TEXT
 Getting around within your text is critical to productivity. With vim this is both simple and elegant, as it leverates the core principal of VIM AS LANGUAGE that we talked about above. First, some basics.
 
-*Basic motions*
+**Basic motions**
 We start with use of the home row. Typists are trained to keep their right hand on the j, k, l, and ";" keys, and this is the starting point for using vim as well.
 * j : move down one line
 * k : move up one line
 * h : move left one character
 * l : move right one character
 
-*Moving within the line*
+**Moving within the line**
 You can easily move within the line you're on.
 * 0 : move to the beginning of the line.
 * $ : move to the end of the line
@@ -94,7 +103,7 @@ You can easily move within the line you're on.
 * t" : jump to the right before next quotes
 * f" : jump and land on the next quotes
 
-*Moving by word*
+**Moving by word**
 We can also move by word:
 * w : move forward one word
 * b : move back one word
@@ -106,11 +115,11 @@ When you use uppercase you ignore some delimiters within a string that may break
 
 This uppercasing of a given command having different and more powerful effects is something we'll see frequently.
 
-*Moving by sentence or paragraph*
+**Moving by sentence or paragraph**
 * ) : move forward one sentence
 * } : move forward one paragraph
 
-*Moving within the screen*
+**Moving within the screen**
 * H : move to the top of the screen
 * M : move to the bottom of the screen
 * L : move to the bottom of the screen
@@ -121,7 +130,7 @@ This uppercasing of a given command having different and more powerful effects i
 * ^F : page down
 * ^B : page up
 
-## change text
+## Change Text
 We've done a bunch of moving within our text. Now let's make some changes. The first thing to remember is that the motions will always be with us - they're part of the language(they're modifiers in the VOCABULARY ABOVE).
 
 1. You start in Normal Mode.
@@ -130,3 +139,123 @@ We've done a bunch of moving within our text. Now let's make some changes. The f
 4. *Visual Mode* is a way to select text. It's a lot like Normal Mode except your movements change your highlighting. You can select text both character-wise and line-wise.
 5. The purpose of *Visual Mode* is then perform some operation on all the content you have highlighted, which makes it very powerful.
 6. *Ex Mode* is a mode where you drop down to the bottom, where you get a ":" prompt, and you can enter commands. More on that later. Just know that you can run some powerful command line stuff from there.
+
+Let's recall our languate: verb, modifier, noun. So we're assuming we start in Normal Mode, and we're going to switch into Insert Mode in order to change something.
+
+We have a few options to go into Insert Mode. **change(c), insert(i), append(a)**, and we can do variations on these, as seen below.
+
+### Basic change/insert options
+* i : *insert* before the cursor
+* a : *append* after the cursor
+* I : *Insert* at the beginning of the line
+* A : *Append* at the end of the line
+* o : *open* a new line below the current one
+* O : *Open* a new line above the current one
+* r : *replace* the one character under your cursor
+* R : *Replace* the character under your cursor, but just keep typing afterwards
+* cm : change whatever you define as a *movement*, e.g. a word, or a sentence, or a paragraph.
+* C : *Change* the current line from where you're at
+* ct? : *change* change up to the question mark
+* s : *substitute* from where you are to the next command(noun)
+* S : *substitute* the entire current line
+
+**Formatting Text**
+It's sometimes helpful to format text quickly, such as paragraphs, and this can easily be done with the following command:
+```vim
+gq ap
+```
+`gq` works based on your textwidth setting, which means it'll true up whatever you invoke it on to be nice and neat within those boundaries.
+
+**Deleting text**
+Now we know how to change text, let's see how to do straight deletes. As you're probably getting now, it's very similar - just a difference action to start things off.
+* x : *exterminate*(delete) the character under the cursor
+* X : *exterminate*(delete) the character before the cursor
+* dm : delete whatever you defines as a *movement*, e.g. a word, or a sentence, or a paragraph.
+* dd : delete the current line
+* dt : delete delete from where you are to the period
+* D : delete to the end of the line
+* J : *join* the current line with next one(delete what's between)
+
+**UNDO AND REDO**
+A text editor can't exist without undo and redo. As you're probably noticed, vim does its best to make the keys for the actions feel intuitive, and undo and redo are not exceptions.
+* u : undo your last action
+* Ctrl-r :  redo the last action
+
+Both commands can be used repeatedly, until you either go all the way back to last save, or all the way forward to your current state.
+
+**REPEATING ACTIONS**
+One of the most powerful commands in all of vim is the period ".".
+The period "." allows you to do something brilliant - it lets you repeat whatever it is that you just did
+
+`Using the "." to repeat your last action`
+
+For example, delete a word `dw` and delete five words `5.` .
+
+**COPY AND PASTE**
+
+*Copying text*
+
+`vim` does copying a bit different than one might except. The command isn't `c`, lol. if you'll remember, `c` is already taken for "change". `vim` instead uses `y` for "yank" as it's copy command and shortcut.
+* y : yank(copy) whatever's selected
+* yy : yank the current line
+
+**CUTTING TEXT**
+Cutting text is simple: it's the same as deleting. So whatever syntax you're using for that, you're actually pulling that deleted text into a buffer and preparing it to be pasted.
+
+**PASTING TEXT**
+We use `p` command as its base. So, if you delete a line using `dd`, you can paste it back using `p`.
+
+One thing to remember about pasting is that it generally starts right after your cursor, and either pastes characters/words or lines or columns - based on what you yanked. Also remember that you can undo any paste with universal undo command "u".
+
+A copy and paste reference
+* y : yank from where you are to the next command(noun)
+* yy : a shortcut for copying the current line
+* p : paste the copied/deleted text after the current cursor position
+* P : paste the copied/deleted text before the current cursor position
+
+*Switching lines of text*
+```vim
+ddp
+```
+This is a quick trick you can use to swap the position of two lines of text. The first part deletes the line you're on, and the second part puts it back above where it used to be.
+
+**SPELLCHECKING**
+We'd be in pretty bad shape if we couldn't spellcheck, and `vim` does it quite well. First we need to set the option within our conf file `somewhere in your ~/.vimrc`
+
+```vim
+set spell spellang=en_us
+```
+
+Finding misspelled words
+
+When you have `set spell` enabled within your conf file, misspelled words are automatically underlined for you. You can also enable or disable this by `:set spell` and `set nospell`
+
+For I don't change my conf file. Instead I just enable it whenever i want to use it.
+
+Either way, once you've got some misspellings you can then advance through them and take action using following commands:
+
+*Go to the next misspelled word*
+```vim
+]s
+```
+
+*Go to the last misspelled word*
+```vim
+[s
+```
+
+*When on a misspelled word, get some suggestions*
+```vim
+z=
+```
+
+*Mark a misspelled word as correct*
+```
+zg
+```
+
+*Mark a good word as misspelled*
+```vim
+zw
+```
+
