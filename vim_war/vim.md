@@ -123,4 +123,10 @@ This uppercasing of a given command having different and more powerful effects i
 
 ## change text
 We've done a bunch of moving within our text. Now let's make some changes. The first thing to remember is that the motions will always be with us - they're part of the language(they're modifiers in the VOCABULARY ABOVE).
- 
+
+1. You start in Normal Mode.
+2. Normal Mode is also known as *Command Mode*, as it's where you're usually entering commands. Commands can be movements, deletions, or commands that do these things and then enter into Insert Mode.
+3. *Insert Mode* is where you make changes to your file, and there are tons of ways of entering Insert Mode from Command Mode.
+4. *Visual Mode* is a way to select text. It's a lot like Normal Mode except your movements change your highlighting. You can select text both character-wise and line-wise.
+5. The purpose of *Visual Mode* is then perform some operation on all the content you have highlighted, which makes it very powerful.
+6. *Ex Mode* is a mode where you drop down to the bottom, where you get a ":" prompt, and you can enter commands. More on that later. Just know that you can run some powerful command line stuff from there.
