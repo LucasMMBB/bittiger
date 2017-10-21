@@ -259,3 +259,77 @@ zg
 zw
 ```
 
+### SUBSTITUTION
+Another powerful feature of VIM is its ability to do powerful substitutions. They're done by specifying what you're looking for first, then what you're changing it to, then the scope of the change.
+
+The basic setup is the `:%s`
+
+*change "foo" to "bar" on every line*
+```vim
+:%s /foo/bar/g
+```
+
+*change "foo" to "bar" on just the current line*
+'''vim
+:s /foo/bar/g
+'''
+There are many other options, but these are the basics
+
+## Advanced
+
+Cool! So we're covered a number of basics that any text editor should have, and how vim handles those tasks. Now let's look at some more advanced stuff.
+
+#### TEXT OBJECTS
+Text Objects are truly spectacular. They allow you to perform actions against more complex targets. So, rather than selecting a word and deleting it, or going to the beginning of a sentence and deleting it, you can instead perform actions on these objects from wherever you are within them.
+
+**Word Text Objects**
+Let's look first at some word-based objects.
+* iw : inside word
+* aw : around word
+
+These are targets(nouns), so we can delete against them, change against them, etc.
+
+*delete around a word*
+`daw`
+
+Sentence Text Objects
+* is : inside sentence
+* as : around sentence
+
+Those work pretty much the same as with word objects, so imagine you're knee deep into a sentence that you decide suddenly you hate. Instead of moving to the beginning of it and figuring out how to delete to the end, you can simply
+
+*change inside a sentence*
+```vim
+cis
+```
+This nukes the entire sentence and puts you in Insert Mode at the beginning of your new one.
+
+**More object types**
+
+Here are some other objects types.
+* paragraphs : ip and ap
+* single quotes : i' and a'
+* double quotes: i" and a"
+
+Remember the key is that you don't even have to be inside the section in question; You just tell it `ci"` and it'll delete everything inside the double quotes and drop you inside them in Insert Mode.
+
+Here a list of the objects for your reference:
+* words: iw and aw
+* sentences: is and as
+* paragraphs: ip and ap
+* single quotes: i' and a'
+* double quotes: i" and a"
+* back ticks: i' and a'
+* brackets: i[ and a[
+* parenthesis: i( and a(
+* braces: i{ and a{
+* tag: it and at
+
+
+## USING VISUAL MODE
+I think the good thing to say about Visual mode is that it magnifies the power of everything we've learned so far. It does this by allowing you to apply commands to the text that's currently highlighted
+
+So let's started with how to enter Visual Mode and light up some text. You can enter Visual Mode with the `v` key, and there are three different options.
+* character-based : v
+* line-based : V
+* paragraphs : Ctrl-v
