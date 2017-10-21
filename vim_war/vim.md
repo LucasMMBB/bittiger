@@ -333,3 +333,57 @@ So let's started with how to enter Visual Mode and light up some text. You can e
 * character-based : v
 * line-based : V
 * paragraphs : Ctrl-v
+
+**Selecting indside contianers**
+Often time you'll be inside some content that is surrounded on both sides by something, such as `,.([{`. We can visually select these things by use following commands:
+
+*select inside of parentheis*
+```vim
+vi(
+``` *select inside of brackets* ```vim vi[
+```
+
+You can also add a number to that to select two levels out(if you're inside a nested set).
+
+*select everything inside the second tier braces*
+```vim
+v2i{
+```
+
+**character-based visual select**
+
+Starting with character-based(using `v` to enter from Normal Mode), you can use this to select characters, set of characters, words, etc.
+
+The main thing to understand here is that now you're in Visual Mode,*your motions are changing what's being highlighted. This means you can do motions like `w` or `)` to expand your selection.* The highlighted area is then going to become the target for an action.
+
+**Line-based visual select**
+You enter this mode by pressing the `V` key from Normal Mode, and from here you then take the actions we'll discuss in a moment.
+
+**Column-based visual select**
+Another option is to select text vertically, which is great for pulling columns of data.
+
+**Actions you can perform on visually selected text**
+It's really your choice, but the most common operations are simply deletion, copy, and paste.
+
+*enter visual mode and select two more words of text, and copy them*
+```vim
+vwwy
+```
+Then you simply go wherever you want to put them and type `p` to paste them there
+
+Or you can do some line-based action.
+
+*enter line-based visual mode and select a couple of lines below*
+```vim
+vjjd
+```
+
+## USING MACROS
+People think macros are scary. They're really not. They really come down to one thing: recording EVERYTHING you do and then doing it again when you replay. Here's a simply reference
+
+* qa : start recording a macro named "a"
+* q : stop recording
+* @a : play back the macro
+
+You can have multiple macros stored in multiple registers, e.g. "a", "b", "c", whatever. And then you just play them back with `@a` or `@c` or whatever.
+
