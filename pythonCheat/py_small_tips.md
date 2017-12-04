@@ -4,12 +4,14 @@ There are so many good and easy places in Python. I list some of them. Hope it m
 #### Tip1. Alternate two variables in place
 
 `x, y = y, x`
+
 #### Tip2. Compare Operators can be combined
 ```python
 x = 10
 print 1 < x < 20
 # true
 ```
+
 #### Tip3. One line value assignment
 `x = "x" if True else "y"`
 
@@ -23,11 +25,13 @@ multiStr = ("This is xxx from"
 print multiStr
 # This is xxx from umich Hello there
 ```
+
 #### Tip5. assign multi vars by list
 ```python
 x, y, z = [1,2,3]
 print (x, y, z) # (1,2,3)
 ```
+
 #### Tip6.  Print the root paths of modules imported
 ```python
 import os
@@ -39,6 +43,7 @@ print socket
 #<module 'os' from '/usr/lib/python2.7/os.pyc'>
 #<module 'socket' from '/usr/lib/python2.7/socket.pyc'>
 ```
+
 #### Tip7. Single underscore variable in python
 In python command line, the result will be assigned to a temporary variable "_".
 ```python
@@ -47,6 +52,7 @@ In python command line, the result will be assigned to a temporary variable "_".
 >>> print _
 7
 ```
+
 #### Tip8.  Dict/Set
 ```python
 dic = {i:i**2 for i in range(5)}
@@ -101,16 +107,44 @@ x = 1
 print getsizeof(x)
 # 24
 ```
+
 In Python 3.5
-```
+```python
 from sys import *
 x = 1
 print (getsizeof(x))
 # 28
 ```
+
+#### Tip8. Open Interactive interface
+run command `import this`
+Here you will see some advice
+
+#### Tip9. Clear your interactive interface
+```python
+import os
+os.system('clear')
+```
+
+#### Tip9. Check whether a variable is none
+you may use following commands
+```python
+a = None
+if not a:
+	print a
+```
+However this command will print also when a == 0
+so using following code
+```python
+if a is not None:
+	print a
+```
+
+
 ## Conclusion
 I will keep updating tips for python.
 Hope it will help
+
 ## About me
 Maoxu Liu - Software engineer
 Check me on:
