@@ -19,7 +19,7 @@ ADB: Android Debug Bridge, is used for debug and test during development. Basicl
 #### Get your device information
 - `adb shell cat /sys/class/net/wlan0/address` retrieve wifi address
 - `adb shell cat /proc/cpuinfo` get cpu serial number
-- `adb shell cat /system/buuild.prop`
+- `adb shell cat /system/build.prop`
 - `adb shell cat /data/misc/wifi/*.conf` see wifi configuration attributes
 
 #### Manage applications on your device
@@ -49,3 +49,4 @@ ADB: Android Debug Bridge, is used for debug and test during development. Basicl
 - `adb shell screencap -p <path/file>`  screenshot
 
 I will keep adding more commands.
+
