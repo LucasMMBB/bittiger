@@ -1,6 +1,8 @@
 # Git Quick Tutorial
 Here I want to share some quick commands about `git`
 
+----
+
 ### Init a repo
 To initialize a git repository, use `git init`
 After run this command, we have a hidden directory called `.git` where git operates.
@@ -70,3 +72,28 @@ After unstage, we found that the changes were removed from staging area. However
 ```
 git checkout -- <filename>
 ```
+
+### Branching OUt
+When developers are working on a feature or bug they'll often create a copy(aka. **branck**) of their code they can make seperate commits to. Then when they're done they can merge this branch back into their main **master** branch.
+
+Create a new branch `git branch <branchname>`
+
+
+### Switching Branches
+Run `git branch` to see branches you are having. A main branch named *master* and other branches.
+
+Switch them by using `git checkout <branch>`
+
+### Remove files
+`git rm ` will not only rm files but alos **stage** the removal changes of the files.
+```
+git rm <filename>
+
+git rm -r <directory>
+
+git status
+
+git commit -m "your comment"
+```
+
+### 
