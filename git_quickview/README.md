@@ -29,3 +29,19 @@ To store our staged changes we run the **commit** command with a message describ
 git commit -m "added your message here"
 ```
 
+### History
+So what about we wanna check our commit history? No worries, we have `git log` to record our git commit history.
+Think of Git's log as a journal that remembers all the changes we've committed so far, in the order we committed them.
+
+### Remote server.
+We've done a lot of changes and now it's time to push our changes to our server.
+To push local *repo* to Remote server, we'll need to add a remote repositary.
+```
+git remote add origin <server link>
+```
+
+### Pushing Remotely
+Let's push our local changes to our **origin** repo(on Remote Server)
+
+The name of our remote is **origin** and the default local branch name is **master**. The `-u` tells Git to remember the parameters, so that next time we can simply run `git push` and Git will know what to do.
+So run `git push -u origin master`
