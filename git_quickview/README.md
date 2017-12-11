@@ -45,3 +45,28 @@ Let's push our local changes to our **origin** repo(on Remote Server)
 
 The name of our remote is **origin** and the default local branch name is **master**. The `-u` tells Git to remember the parameters, so that next time we can simply run `git push` and Git will know what to do.
 So run `git push -u origin master`
+
+
+### Pulling Remotely
+When other people in our project made some changes, we check status and pull down any new changes by running.
+```
+git pull origin master
+```
+
+### Differences
+we want the diff of our most recent commit, which we can refer to using the **HEAD** pointer.
+
+`git diff HEAD`
+
+
+### Staged Differences
+Another great use for **diff** is looking at changes within files that have already been staged. Remember, staged files are files we have told git that are ready to be committed.
+
+### Resetting the Stage
+Unstage files by using `git reset` command.
+
+### Undo
+After unstage, we found that the changes were removed from staging area. However, the changes are still in the files. It would be great if we cound go back to how things were at the last commit.
+```
+git checkout -- <filename>
+```
