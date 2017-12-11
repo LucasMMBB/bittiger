@@ -96,4 +96,17 @@ git status
 git commit -m "your comment"
 ```
 
-### 
+### Merge
+Merge `<branchname>` branch to *master*.
+```
+git merge <branchname>
+```
+
+Once you finished your branch lifecycle, you can delete it.
+`git branch -d <branchname>`
+
+
+### Force Delete
+What if you have been working on a feature branch and you decide you don't want this. You'll notice that `git branch -d` won't let you delete something that hasn't been *merged*.
+
+You can either add the `--force (-f)` option or use `-D` which combines `-d -f` together into one command.
