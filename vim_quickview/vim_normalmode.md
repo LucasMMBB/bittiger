@@ -17,43 +17,42 @@ To switch them, please refer to the pictures attached in the same folders.
 The following are some quick sheck and will be very useful if you want to use VIM proficiently
 
 #### How to jump among words
-`w`: jump to the **b**eginning of the next word
-`e`: jump to the en**d** of the next word
-`b`: jump to the **b**eginning of the previous word
+`w`: jump to the **b**eginning of the next word<br/>
+`e`: jump to the en**d** of the next word<br/>
+`b`: jump to the **b**eginning of the previous word<br/>
 
 #### How to go to the beginning/ending of the line
-`i$`: to the line ending
-`0`: to the line beginning
+`$`: to the line ending<br/>
+`0`: to the line beginning<br/>
 
 #### How to go to next/previous block of code
-`{`: jump to the next block of code or we can say that jumpinp to next paragraph
-`}`: jump to the previous block of code
+`{`: jump to the next block of code or we can say that jumpinp to next paragraph<br/>
+`}`: jump to the previous block of code<br/>
 
 #### How to go to the beginning/ending of the page
-`gg`: go to the first line of the whole page
-`G`: go to the last line of the whole page
-`H`: go to the first line of current page
-`M`: go to the middle of current page
-`L`:go to the last line of current page
-Just easy for remember: High, Middle, Low
+`gg`: go to the first line of the whole page<br/>
+`G`: go to the last line of the whole page<br/>
+`H`: go to the first line of current page<br/>
+`M`: go to the middle of current page<br/>
+`L`:go to the last line of current page<br/>
+Just easy for remember: High, Middle, Low<br/>
 
 #### How to go to specific line number
-`number + gg` or `number + G`: jump to specific line number
-such as: 100G or 100gg
+`number + gg` or `number + G`: jump to specific line number<br/>
+such as: 100G or 100gg<br/>
 
 #### How to mark the position
-`m<a>`: mark the position where you are currently at
-`'a`: go to where you marked
-Here `m` means `mark` and `a` is a letter and `a` can be any letters.
-Use `'` and `any letter` to jump to where you mark
+`m<a>`: mark the position where you are currently at<br/>
+`'a`: go to where you marked<br/>
+Here `m` means `mark` and `a` is a letter and `a` can be any letters.<br/>
+Use `'` and `any letter` to jump to where you mark<br/>
 
 #### How to scroll in vim
-`Ctrl + f`: scroll forward full screen
-`Ctrl + b`: scroll backward full screen
+`Ctrl + f`: scroll forward full screen<br/>
+`Ctrl + b`: scroll backward full screen<br/>
 
-`Ctrl + d`: scroll forward half screen
-`Ctrl + u`: scroll backward half screen
+`Ctrl + d`: scroll forward half screen<br/>
+`Ctrl + u`: scroll backward half screen<br/>
 
-`Ctrl + e`: scroll forward one line
-`Ctrl + y`: scroll backward one line
-
+`Ctrl + e`: scroll forward one line<br/>
+`Ctrl + y`: scroll backward one line<br/>
