@@ -9,7 +9,7 @@ Just remember the diff among them
 - Visual mode
 
 To switch them, please refer to the pictures attached in the same folders.
-
+##### All the following usages are in **Normal mode**
 ## Quick notes
 The following are some quick sheck and will be very useful if you want to use VIM proficiently
 
@@ -19,6 +19,10 @@ The following are some quick sheck and will be very useful if you want to use VI
 `b`: jump to the **b**eginning of the previous word
 
 #### How to go to the beginning/ending of the line
-`$`: to the line ending
+`i$`: to the line ending
 `0`: to the line beginning
+
+#### How to go to next/previous block of code
+`{`: jump to the next block of code or we can say that jumpinp to next paragraph
+`}`: jump to the previous block of code
 
