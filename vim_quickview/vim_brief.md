@@ -1,6 +1,10 @@
 # VIM Frequent Key Mapping
 Most of IDEs are currently supporting VIM. By using vim well, you can work on most of IDEs without setting up your own keys.
 
+#### Notice: please watch out the following notices
+1. All commands: Case sensitive
+2. All commands: used in Normal node(if not specified)
+
 ## VIM modes
 Well, you can find a lot of stuff on Google about this and I won't talk much here.
 Just remember the diff among them
@@ -9,7 +13,6 @@ Just remember the diff among them
 - Visual mode
 
 To switch them, please refer to the pictures attached in the same folders.
-##### All the following usages are in **Normal mode**
 ## Quick notes
 The following are some quick sheck and will be very useful if you want to use VIM proficiently
 
@@ -26,3 +29,14 @@ The following are some quick sheck and will be very useful if you want to use VI
 `{`: jump to the next block of code or we can say that jumpinp to next paragraph
 `}`: jump to the previous block of code
 
+#### How to go to the beginning/ending of the page
+`gg`: go to the first line of the whole page
+`G`: go to the last line of the whole page
+`H`: go to the first line of current page
+`M`: go to the middle of current page
+`L`:go to the last line of current page
+Just easy for remember: High, Middle, Low
+
+#### How to go to specific line number
+`number + gg` or `number + G`: jump to specific line number
+such as: 100G or 100gg
