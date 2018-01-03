@@ -13,4 +13,12 @@ To switch them, please refer to the pictures attached in the same folders.
 ## Quick notes
 The following are some quick sheck and will be very useful if you want to use VIM proficiently
 
-####
+#### How to jump among words
+`w`: jump to the **b**eginning of the next word
+`e`: jump to the en**d** of the next word
+`b`: jump to the **b**eginning of the previous word
+
+#### How to go to the beginning/ending of the line
+`$`: to the line ending
+`0`: to the line beginning
+
