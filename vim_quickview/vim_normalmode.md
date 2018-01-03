@@ -40,3 +40,20 @@ Just easy for remember: High, Middle, Low
 #### How to go to specific line number
 `number + gg` or `number + G`: jump to specific line number
 such as: 100G or 100gg
+
+#### How to mark the position
+`m<a>`: mark the position where you are currently at
+`'a`: go to where you marked
+Here `m` means `mark` and `a` is a letter and `a` can be any letters.
+Use `'` and `any letter` to jump to where you mark
+
+#### How to scroll in vim
+`Ctrl + f`: scroll forward full screen
+`Ctrl + b`: scroll backward full screen
+
+`Ctrl + d`: scroll forward half screen
+`Ctrl + u`: scroll backward half screen
+
+`Ctrl + e`: scroll forward one line
+`Ctrl + y`: scroll backward one line
+
