@@ -40,6 +40,18 @@ ADB: Android Debug Bridge, is used for debug and test during development. Basicl
 - `adb shell ls` list all files and directories
 - `adb shell mkdir path/<folder name>` create new directory under that path
 
+#### Check installed packages list
+list all: `adb shell pm list packages`
+list system packages: `adb shell pm list packages -s`
+list third-party packages: `adb shell pm list packages -3`
+
+Use `grep` to filter packages
+```
+adb shell
+pm list packages | grep pattern
+```
+
+
 #### Other commands
 - `adb shell input text <content>` send file content
 - `adb shell input keyevent <keycode>` send keyboard events through adb
