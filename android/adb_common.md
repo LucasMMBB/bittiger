@@ -51,14 +51,56 @@ adb shell
 pm list packages | grep pattern
 ```
 
+## Check Device Information
+#### Device Model
+```sh
+adb shell dumpsys battery
+```
+#### Screen Resolution
+```sh
+adb shell wm size
+```
+#### Screen Density
+```sh
+adb shell wm density
+```
 
-#### Other commands
-- `adb shell input text <content>` send file content
-- `adb shell input keyevent <keycode>` send keyboard events through adb
-- `adb shell wm size` check device resolution
-- `adb shell getprop <key>` get device information
-- `adb setprop <key> <value>`set params in device
-- `adb shell screencap -p <path/file>`  screenshot
+#### IMEI
+```sh
+adb shell dumpsys iphonesubinfo
+```
+Find the Device ID and it is IMEI
 
-I will keep adding more commands.
+#### Android Version
+```sh
+adb shell getprop ro.build.version.release
+```
+
+#### Find IP
+You can use `adb shell netcfg`
+
+#### Check your CPU
+```sh
+adb shell cat /proc/cpuinfo
+```
+#### Memory info
+```sh
+adb shell cat /proc/meminfo
+```
+#### More info about system and information
+```sh
+adb shell cat /system/build.prop
+```
+Here are some common info.
+
+| Attributes                      | Description                  |
+|---------------------------------|------------------------------|
+| ro.build.version.sdk            | SDK version                  |
+| ro.build.version.release        | Android version              |
+| ro.build.version.security_patch | Android security version     |
+| ro.product.model                | Model                        |
+| ro.product.brand                | Brand                        |
+| ro.product.name                 | Name                         |
+
+## keep updating more commands. 
 
